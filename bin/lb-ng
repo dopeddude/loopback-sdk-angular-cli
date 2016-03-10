@@ -4,16 +4,14 @@ var fs = require('fs');
 var path = require('path');
 var semver = require('semver');
 var optimist = require('optimist');
-var generator = require('loopback-sdk-angular');
+var generator = require('loopback-sdk-rest-connector');
 
 var argv = optimist
-  .usage('Generate Angular $resource services for your LoopBack application.' +
+  .usage('Generate Rest Connector services for your LoopBack application.' +
     '\nUsage:' +
-    '\n    $0 [options] server/app.js [client/js/lb-services.js]')
-  .describe('m', 'The name for generated Angular module.')
-  .default('m', 'lbServices')
+    '\n    $0 [options] server/app.js [client/js/lb-rc-services.js]')
   .describe('u', 'URL of the REST API end-point')
-  .alias({ u : 'url', m: 'module-name' })
+  .alias({ u : 'url'})
   .demand(1)
   .argv;
 
@@ -31,11 +29,10 @@ if (app.booting) {
 }
 
 function runGenerator() {
-  var ngModuleName = argv['module-name'] || 'lbServices';
   var apiUrl = argv['url'] || app.get('restApiRoot') || '/api';
 
-  console.error('Generating %j for the API endpoint %j', ngModuleName, apiUrl);
-  var result = generator.services(app, ngModuleName, apiUrl);
+  console.error('Generating rest-connector-services for the API endpoint %j', apiUrl);
+  var result = generator.services(app, apiUrl);
 
   if (outputFile) {
     outputFile = path.resolve(outputFile);
