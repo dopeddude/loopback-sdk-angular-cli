@@ -3,7 +3,7 @@
   "version": "2.0.1",
   "description": "CLI tools for auto-generating Rest Connector services for LoopBack",
   "bin": {
-    "lb-ng": "bin/lb-ng"
+    "lb-rc": "bin/lb-rc"
   },
   "scripts": {
     "pretest": "jshint .",
