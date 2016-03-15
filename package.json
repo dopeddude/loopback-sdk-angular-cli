@@ -32,7 +32,7 @@
     "node": ">= 0.8.0"
   },
   "dependencies": {
-    "loopback-sdk-rest-connector": "https://github.com/hotelsoft/loopback-sdk-rest-connector-cli",
+    "loopback-sdk-rest-connector": "https://github.com/hotelsoft/loopback-sdk-rest-connector",
     "optimist": "^0.6.1",
     "semver": "^2.2.1"
   },
